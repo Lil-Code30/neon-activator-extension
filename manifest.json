@@ -1,7 +1,7 @@
 {
   "name": "Neon Activator",
   "description": "A simple Chrome extension that activates neon lights on any webpage.",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "manifest_version": 3,
   "action": {
     "default_icon": "hello_extensions.png"

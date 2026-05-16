@@ -1,10 +1,29 @@
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
+/* ============================================================
+   NEON.CSS  —  Universal injection stylesheet
+   Designed to override ANY existing page styles.
+   !important is intentional and required here.
+   ============================================================ */
+
+/* ── Variables (scoped to :root so they propagate everywhere) */
+:root {
+  --n-bg: #060608;
+  --n-bg-surface: #0d0d10;
+  --n-bg-card: rgba(13, 13, 16, 0.92);
+  --n-border: rgba(0, 255, 170, 0.35);
+
+  --n-green: #00ffaa;
+  --n-magenta: #ff00ff;
+  --n-cyan: #00ffff;
+  --n-yellow: #ffff00;
+  --n-red: #ff4444;
+  --n-blue: #4488ff;
+
+  --n-text: #e8e8e8;
+  --n-dim: #888899;
+  --n-font: "Courier New", Courier, monospace;
 }
+
+/* ── Universal background & scanline atmosphere ──────────── */
 html,
 body,
 div,
@@ -14,262 +33,474 @@ header,
 footer,
 nav,
 main,
-aside {
-  background-color: #000000 !important;
+aside,
+form,
+fieldset {
+  background-color: var(--n-bg) !important;
+  border-color: var(--n-border) !important;
+  background-image: none !important;
 }
 
 body {
-  background-color: #0a0a0a !important;
-  color: #fff;
-  font-family: "Courier New", Courier, monospace;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  padding: 2rem;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 255, 170, 0.013) 2px,
+      rgba(0, 255, 170, 0.013) 4px
+    ),
+    radial-gradient(
+      ellipse 80% 50% at 50% 0%,
+      rgba(0, 255, 170, 0.07) 0%,
+      transparent 70%
+    ) !important;
+  color: var(--n-text) !important;
+  font-family: var(--n-font) !important;
+  line-height: 1.7 !important;
 }
 
-h1 {
-  font-size: 3rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  color: #fff;
-  text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #fff,
-    0 0 42px #0fa,
-    0 0 82px #0fa,
-    0 0 92px #0fa,
-    0 0 102px #0fa,
-    0 0 151px #0fa;
-  animation: flicker 1.5s infinite alternate;
+/* Wipe common framework utility backgrounds */
+[class*="bg-"],
+[class*="background"] {
+  background-color: var(--n-bg) !important;
 }
 
-h2 {
-  font-size: 2rem;
-  color: #fff;
+/* ── Typography ──────────────────────────────────────────── */
+h1,
+h1 * {
+  color: #ffffff !important;
+  font-family: var(--n-font) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.2em !important;
   text-shadow:
-    0 0 7px #fff,
-    0 0 10px #fff,
-    0 0 21px #0fa,
-    0 0 42px #0fa,
-    0 0 82px #0fa;
+    0 0 8px #fff,
+    0 0 20px var(--n-green),
+    0 0 60px var(--n-green),
+    0 0 120px var(--n-green) !important;
+  animation: n-flicker 4s infinite alternate !important;
+  background: transparent !important;
+}
+
+h2,
+h2 * {
+  color: var(--n-green) !important;
+  font-family: var(--n-font) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  text-shadow:
+    0 0 6px var(--n-green),
+    0 0 18px var(--n-green),
+    0 0 40px var(--n-green) !important;
+  background: transparent !important;
+}
+
+h3,
+h3 * {
+  color: var(--n-cyan) !important;
+  font-family: var(--n-font) !important;
+  letter-spacing: 0.1em !important;
+  text-shadow:
+    0 0 4px var(--n-cyan),
+    0 0 10px var(--n-cyan) !important;
+  background: transparent !important;
+}
+
+h4,
+h5,
+h6,
+h4 *,
+h5 *,
+h6 * {
+  color: var(--n-text) !important;
+  font-family: var(--n-font) !important;
+  text-shadow: 0 0 6px rgba(0, 255, 170, 0.2) !important;
+  background: transparent !important;
 }
 
 p,
+span,
+li,
+td,
+th,
+dd,
+dt,
+figcaption,
+blockquote {
+  color: var(--n-text) !important;
+  font-family: var(--n-font) !important;
+  text-shadow: 0 0 4px rgba(0, 255, 170, 0.12) !important;
+  background: transparent !important;
+}
+
 label {
-  font-size: 1.1rem;
-  color: #ffffff;
-  text-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
-}
-
-a {
-  color: #fff;
-  text-decoration: none;
-  /* text-shadow: 0 0 5px #0fa; */
-  transition: text-shadow 0.3s ease;
-}
-
-a:hover {
+  color: var(--n-green) !important;
+  font-family: var(--n-font) !important;
+  font-size: 0.85em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
   text-shadow:
-    0 0 10px #0fa,
-    0 0 20px #0fa,
-    0 0 40px #0fa;
+    0 0 4px var(--n-green),
+    0 0 10px var(--n-green) !important;
+  background: transparent !important;
 }
 
-button {
-  background: transparent;
-  border: 2px solid #0fa;
-  color: #0fa;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 1.1rem;
-  padding: 0.75rem 2rem;
-  cursor: pointer;
-  text-transform: uppercase;
-  letter-spacing: 0.15em;
-  transition: all 0.3s ease;
+small {
+  color: var(--n-dim) !important;
+  background: transparent !important;
+}
+
+/* ── Links ───────────────────────────────────────────────── */
+a,
+a:visited,
+a * {
+  color: var(--n-green) !important;
+  text-decoration: none !important;
+  text-shadow:
+    0 0 4px var(--n-green),
+    0 0 10px var(--n-green) !important;
+  background: transparent !important;
+  transition:
+    color 0.2s ease,
+    text-shadow 0.2s ease !important;
+}
+
+a:hover,
+a:hover * {
+  color: #ffffff !important;
+  text-shadow:
+    0 0 6px var(--n-green),
+    0 0 18px var(--n-green),
+    0 0 40px var(--n-green) !important;
+}
+
+/* ── Buttons ─────────────────────────────────────────────── */
+button,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+[role="button"],
+.btn,
+[class*="button"] {
+  background: transparent !important;
+  border: 1px solid var(--n-green) !important;
+  color: var(--n-green) !important;
+  font-family: var(--n-font) !important;
+  font-size: 0.9em !important;
+  padding: 0.6rem 1.8rem !important;
+  cursor: pointer !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.15em !important;
+  border-radius: 0 !important;
   box-shadow:
-    0 0 5px #0fa,
-    inset 0 0 5px #0fa;
+    0 0 4px var(--n-green),
+    0 0 10px var(--n-green),
+    inset 0 0 8px rgba(0, 255, 170, 0.06) !important;
+  transition: all 0.25s ease !important;
+  text-shadow: 0 0 4px var(--n-green) !important;
 }
 
-button:hover {
-  background: #0fa;
-  color: #0a0a0a;
+button:hover,
+input[type="button"]:hover,
+input[type="submit"]:hover,
+[role="button"]:hover {
+  background: var(--n-green) !important;
+  color: var(--n-bg) !important;
+  text-shadow: none !important;
   box-shadow:
-    0 0 10px #0fa,
-    0 0 20px #0fa,
-    0 0 40px #0fa,
-    inset 0 0 10px #0fa;
+    0 0 6px var(--n-green),
+    0 0 18px var(--n-green),
+    0 0 40px var(--n-green) !important;
 }
 
-input,
+button:active {
+  transform: scale(0.97) !important;
+}
+
+/* ── Inputs ──────────────────────────────────────────────── */
+input:not([type="button"]):not([type="submit"]):not([type="reset"]):not(
+    [type="checkbox"]
+  ):not([type="radio"]),
 textarea,
 select {
-  background: #111;
-  border: 1px solid #0fa;
-  color: #0fa;
-  font-family: "Courier New", Courier, monospace;
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-  outline: none;
-  box-shadow:
-    0 0 3px #0fa,
-    inset 0 0 3px rgba(0, 255, 170, 0.1);
-  transition: box-shadow 0.3s ease;
+  background: var(--n-bg-surface) !important;
+  border: 1px solid var(--n-border) !important;
+  color: var(--n-green) !important;
+  font-family: var(--n-font) !important;
+  font-size: 0.95em !important;
+  padding: 0.55rem 1rem !important;
+  outline: none !important;
+  box-shadow: inset 0 0 4px rgba(0, 255, 170, 0.06) !important;
+  border-radius: 0 !important;
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease !important;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--n-dim) !important;
+  text-shadow: none !important;
 }
 
 input:focus,
 textarea:focus,
 select:focus {
+  border-color: var(--n-green) !important;
   box-shadow:
-    0 0 10px #0fa,
-    0 0 20px #0fa,
-    inset 0 0 10px rgba(0, 255, 170, 0.2);
+    0 0 4px var(--n-green),
+    0 0 10px var(--n-green),
+    inset 0 0 12px rgba(0, 255, 170, 0.1) !important;
+  outline: none !important;
 }
 
-.container,
-.card {
-  background: rgba(10, 10, 10, 0.85);
-  border: 1px solid #0fa;
-  padding: 2rem;
-  margin: 1rem 0;
-  box-shadow:
-    0 0 7px #0fa,
-    inset 0 0 7px rgba(0, 255, 170, 0.1);
-  backdrop-filter: blur(2px);
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: var(--n-green) !important;
 }
 
+/* Custom select arrow */
+select {
+  appearance: none !important;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2300ffaa' stroke-width='1.5' fill='none'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 0.75rem center !important;
+  padding-right: 2.5rem !important;
+}
+
+/* ── Cards, panels, modals ───────────────────────────────── */
+.card,
+.panel,
+.box,
+.widget,
+[class*="card"],
+[class*="panel"],
+[class*="modal"],
+[class*="dialog"] {
+  background: var(--n-bg-card) !important;
+  border: 1px solid var(--n-border) !important;
+  box-shadow:
+    0 0 10px rgba(0, 255, 170, 0.08),
+    inset 0 0 12px rgba(0, 255, 170, 0.04) !important;
+  border-radius: 0 !important;
+  backdrop-filter: blur(4px) !important;
+  transition:
+    box-shadow 0.3s ease,
+    border-color 0.3s ease !important;
+}
+
+.card:hover,
+[class*="card"]:hover {
+  border-color: rgba(0, 255, 170, 0.65) !important;
+  box-shadow:
+    0 0 20px rgba(0, 255, 170, 0.15),
+    inset 0 0 20px rgba(0, 255, 170, 0.06) !important;
+}
+
+/* ── Dividers ────────────────────────────────────────────── */
 hr {
-  border: none;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, #0fa, transparent);
-  margin: 1.5rem 0;
-  box-shadow: 0 0 10px #0fa;
+  border: none !important;
+  height: 1px !important;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--n-green),
+    transparent
+  ) !important;
+  margin: 2rem 0 !important;
+  opacity: 0.5 !important;
+  box-shadow: 0 0 8px var(--n-green) !important;
 }
 
-ul,
-ol {
-  color: #e0e0e0;
-  text-shadow: 0 0 3px rgba(0, 255, 170, 0.2);
+/* ── Lists ───────────────────────────────────────────────── */
+li::marker {
+  color: var(--n-green) !important;
 }
 
-li {
-  margin: 0.5rem 0;
+/* ── Tables ──────────────────────────────────────────────── */
+table {
+  border-collapse: collapse !important;
+  width: 100% !important;
+  background: transparent !important;
 }
 
+th {
+  color: var(--n-green) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.1em !important;
+  font-size: 0.8em !important;
+  text-shadow:
+    0 0 4px var(--n-green),
+    0 0 10px var(--n-green) !important;
+  border-bottom: 1px solid var(--n-border) !important;
+  background: transparent !important;
+  padding: 0.6rem 1rem !important;
+}
+
+td {
+  border-bottom: 1px solid rgba(0, 255, 170, 0.08) !important;
+  padding: 0.5rem 1rem !important;
+  background: transparent !important;
+}
+
+tr:hover td {
+  background: rgba(0, 255, 170, 0.03) !important;
+}
+
+/* ── Code ────────────────────────────────────────────────── */
 code,
-pre {
-  background: #111;
-  color: #f0f;
-  border: 1px solid #f0f;
-  padding: 0.2rem 0.4rem;
+kbd,
+samp {
+  background: rgba(255, 0, 255, 0.08) !important;
+  color: var(--n-magenta) !important;
+  border: 1px solid rgba(255, 0, 255, 0.3) !important;
+  padding: 0.15rem 0.45rem !important;
+  font-size: 0.88em !important;
   text-shadow:
-    0 0 5px #f0f,
-    0 0 10px #f0f;
+    0 0 4px var(--n-magenta),
+    0 0 10px var(--n-magenta) !important;
 }
 
 pre {
-  padding: 1rem;
-  overflow-x: auto;
+  background: var(--n-bg-surface) !important;
+  border: 1px solid rgba(255, 0, 255, 0.3) !important;
+  padding: 1.25rem 1.5rem !important;
+  overflow-x: auto !important;
   box-shadow:
-    0 0 7px #f0f,
-    inset 0 0 7px rgba(255, 0, 255, 0.1);
+    0 0 12px rgba(255, 0, 255, 0.1),
+    inset 0 0 8px rgba(255, 0, 255, 0.05) !important;
 }
 
-.neon-cyan {
-  color: #0ff;
+pre code {
+  background: transparent !important;
+  border: none !important;
+  padding: 0 !important;
+  box-shadow: none !important;
+}
+
+/* ── Images — green tint to match the aesthetic ──────────── */
+img,
+video {
+  filter: brightness(0.75) saturate(0.6) hue-rotate(100deg) !important;
+  border: 1px solid var(--n-border) !important;
+  box-shadow: 0 0 8px rgba(0, 255, 170, 0.1) !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--n-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--n-green);
+  box-shadow: 0 0 6px var(--n-green);
+}
+* {
+  scrollbar-color: var(--n-green) var(--n-bg);
+  scrollbar-width: thin;
+}
+
+/* ── Text selection ──────────────────────────────────────── */
+::selection {
+  background: var(--n-green) !important;
+  color: var(--n-bg) !important;
+}
+
+/* ── Neon color utilities ────────────────────────────────── */
+.neon-green {
+  color: var(--n-green) !important;
   text-shadow:
-    0 0 7px #0ff,
-    0 0 10px #0ff,
-    0 0 21px #0ff,
-    0 0 42px #0ff;
+    0 0 6px var(--n-green),
+    0 0 18px var(--n-green) !important;
 }
-
 .neon-magenta {
-  color: #f0f;
+  color: var(--n-magenta) !important;
   text-shadow:
-    0 0 7px #f0f,
-    0 0 10px #f0f,
-    0 0 21px #f0f,
-    0 0 42px #f0f;
+    0 0 6px var(--n-magenta),
+    0 0 18px var(--n-magenta) !important;
 }
-
+.neon-cyan {
+  color: var(--n-cyan) !important;
+  text-shadow:
+    0 0 6px var(--n-cyan),
+    0 0 18px var(--n-cyan) !important;
+}
 .neon-yellow {
-  color: #ff0;
+  color: var(--n-yellow) !important;
   text-shadow:
-    0 0 7px #ff0,
-    0 0 10px #ff0,
-    0 0 21px #ff0,
-    0 0 42px #ff0;
+    0 0 6px var(--n-yellow),
+    0 0 18px var(--n-yellow) !important;
 }
-
 .neon-red {
-  color: #f44;
+  color: var(--n-red) !important;
   text-shadow:
-    0 0 7px #f44,
-    0 0 10px #f44,
-    0 0 21px #f44,
-    0 0 42px #f44;
+    0 0 6px var(--n-red),
+    0 0 18px var(--n-red) !important;
 }
-
 .neon-blue {
-  color: #44f;
+  color: var(--n-blue) !important;
   text-shadow:
-    0 0 7px #44f,
-    0 0 10px #44f,
-    0 0 21px #44f,
-    0 0 42px #44f;
+    0 0 6px var(--n-blue),
+    0 0 18px var(--n-blue) !important;
 }
 
-@keyframes flicker {
+/* ── Animation utilities ─────────────────────────────────── */
+.flicker {
+  animation: n-flicker 4s infinite alternate !important;
+}
+.pulse {
+  animation: n-pulse 2s infinite ease-in-out !important;
+}
+.glow-pulse {
+  animation: n-glow-pulse 2.5s infinite ease-in-out !important;
+}
+
+/* ── Keyframes ───────────────────────────────────────────── */
+@keyframes n-flicker {
   0%,
-  18%,
-  22%,
-  25%,
-  53%,
-  57%,
+  19%,
+  21%,
+  24%,
+  52%,
+  56%,
   100% {
     opacity: 1;
   }
   20%,
-  24%,
-  55% {
-    opacity: 0.6;
+  23%,
+  53% {
+    opacity: 0.55;
+  }
+  22%,
+  54% {
+    opacity: 0.8;
   }
 }
 
-@keyframes pulse {
+@keyframes n-pulse {
   0%,
   100% {
     opacity: 1;
   }
   50% {
-    opacity: 0.5;
+    opacity: 0.45;
   }
 }
 
-@keyframes glow-pulse {
+@keyframes n-glow-pulse {
   0%,
   100% {
     box-shadow:
-      0 0 5px #0fa,
-      inset 0 0 5px rgba(0, 255, 170, 0.1);
+      0 0 6px rgba(0, 255, 170, 0.4),
+      inset 0 0 6px rgba(0, 255, 170, 0.08);
   }
   50% {
     box-shadow:
-      0 0 20px #0fa,
-      0 0 40px #0fa,
-      inset 0 0 15px rgba(0, 255, 170, 0.2);
+      0 0 20px rgba(0, 255, 170, 0.7),
+      0 0 45px rgba(0, 255, 170, 0.3),
+      inset 0 0 18px rgba(0, 255, 170, 0.15);
   }
-}
-
-.pulse {
-  animation: pulse 2s infinite;
-}
-
-.glow-pulse {
-  animation: glow-pulse 2s infinite;
 }
