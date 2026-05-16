@@ -1,0 +1,275 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html,
+body,
+div,
+article,
+section,
+header,
+footer,
+nav,
+main,
+aside {
+  background-color: #000000 !important;
+}
+
+body {
+  background-color: #0a0a0a !important;
+  color: #fff;
+  font-family: "Courier New", Courier, monospace;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+h1 {
+  font-size: 3rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #fff,
+    0 0 42px #0fa,
+    0 0 82px #0fa,
+    0 0 92px #0fa,
+    0 0 102px #0fa,
+    0 0 151px #0fa;
+  animation: flicker 1.5s infinite alternate;
+}
+
+h2 {
+  font-size: 2rem;
+  color: #fff;
+  text-shadow:
+    0 0 7px #fff,
+    0 0 10px #fff,
+    0 0 21px #0fa,
+    0 0 42px #0fa,
+    0 0 82px #0fa;
+}
+
+p,
+label {
+  font-size: 1.1rem;
+  color: #ffffff;
+  text-shadow: 0 0 5px rgba(0, 255, 170, 0.3);
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  /* text-shadow: 0 0 5px #0fa; */
+  transition: text-shadow 0.3s ease;
+}
+
+a:hover {
+  text-shadow:
+    0 0 10px #0fa,
+    0 0 20px #0fa,
+    0 0 40px #0fa;
+}
+
+button {
+  background: transparent;
+  border: 2px solid #0fa;
+  color: #0fa;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 0 5px #0fa,
+    inset 0 0 5px #0fa;
+}
+
+button:hover {
+  background: #0fa;
+  color: #0a0a0a;
+  box-shadow:
+    0 0 10px #0fa,
+    0 0 20px #0fa,
+    0 0 40px #0fa,
+    inset 0 0 10px #0fa;
+}
+
+input,
+textarea,
+select {
+  background: #111;
+  border: 1px solid #0fa;
+  color: #0fa;
+  font-family: "Courier New", Courier, monospace;
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  outline: none;
+  box-shadow:
+    0 0 3px #0fa,
+    inset 0 0 3px rgba(0, 255, 170, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  box-shadow:
+    0 0 10px #0fa,
+    0 0 20px #0fa,
+    inset 0 0 10px rgba(0, 255, 170, 0.2);
+}
+
+.container,
+.card {
+  background: rgba(10, 10, 10, 0.85);
+  border: 1px solid #0fa;
+  padding: 2rem;
+  margin: 1rem 0;
+  box-shadow:
+    0 0 7px #0fa,
+    inset 0 0 7px rgba(0, 255, 170, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+hr {
+  border: none;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #0fa, transparent);
+  margin: 1.5rem 0;
+  box-shadow: 0 0 10px #0fa;
+}
+
+ul,
+ol {
+  color: #e0e0e0;
+  text-shadow: 0 0 3px rgba(0, 255, 170, 0.2);
+}
+
+li {
+  margin: 0.5rem 0;
+}
+
+code,
+pre {
+  background: #111;
+  color: #f0f;
+  border: 1px solid #f0f;
+  padding: 0.2rem 0.4rem;
+  text-shadow:
+    0 0 5px #f0f,
+    0 0 10px #f0f;
+}
+
+pre {
+  padding: 1rem;
+  overflow-x: auto;
+  box-shadow:
+    0 0 7px #f0f,
+    inset 0 0 7px rgba(255, 0, 255, 0.1);
+}
+
+.neon-cyan {
+  color: #0ff;
+  text-shadow:
+    0 0 7px #0ff,
+    0 0 10px #0ff,
+    0 0 21px #0ff,
+    0 0 42px #0ff;
+}
+
+.neon-magenta {
+  color: #f0f;
+  text-shadow:
+    0 0 7px #f0f,
+    0 0 10px #f0f,
+    0 0 21px #f0f,
+    0 0 42px #f0f;
+}
+
+.neon-yellow {
+  color: #ff0;
+  text-shadow:
+    0 0 7px #ff0,
+    0 0 10px #ff0,
+    0 0 21px #ff0,
+    0 0 42px #ff0;
+}
+
+.neon-red {
+  color: #f44;
+  text-shadow:
+    0 0 7px #f44,
+    0 0 10px #f44,
+    0 0 21px #f44,
+    0 0 42px #f44;
+}
+
+.neon-blue {
+  color: #44f;
+  text-shadow:
+    0 0 7px #44f,
+    0 0 10px #44f,
+    0 0 21px #44f,
+    0 0 42px #44f;
+}
+
+@keyframes flicker {
+  0%,
+  18%,
+  22%,
+  25%,
+  53%,
+  57%,
+  100% {
+    opacity: 1;
+  }
+  20%,
+  24%,
+  55% {
+    opacity: 0.6;
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes glow-pulse {
+  0%,
+  100% {
+    box-shadow:
+      0 0 5px #0fa,
+      inset 0 0 5px rgba(0, 255, 170, 0.1);
+  }
+  50% {
+    box-shadow:
+      0 0 20px #0fa,
+      0 0 40px #0fa,
+      inset 0 0 15px rgba(0, 255, 170, 0.2);
+  }
+}
+
+.pulse {
+  animation: pulse 2s infinite;
+}
+
+.glow-pulse {
+  animation: glow-pulse 2s infinite;
+}
